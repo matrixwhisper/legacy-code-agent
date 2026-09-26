@@ -26,4 +26,4 @@ jobs:
           pip install pytest
 
       - name: Run all tests
-        run: pytest test_bench.py test_pipeline.py -v
+        run: pytest -v
