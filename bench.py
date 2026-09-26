@@ -10,6 +10,7 @@ import subprocess
 import tempfile
 import time
 from dataclasses import dataclass, field
+from decimal import Decimal
 from typing import Optional
 
 
@@ -155,6 +156,9 @@ def parse_output_record(lines: list[str]) -> dict:
         result["service_fee"] = items["SERVICE FEE"]
     if "PATIENT OWES" in items:
         result["patient_owes"] = items["PATIENT OWES"]
+    bill_components = ("ROOM CHARGES", "PROCEDURE COST", "SERVICE FEE")
+    if all(component in items for component in bill_components):
+        result["total_bill"] = f"{sum(Decimal(items[component]) for component in bill_components):.2f}"
     return result
 
 
