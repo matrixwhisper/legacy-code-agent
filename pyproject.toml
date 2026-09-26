@@ -1,0 +1,19 @@
+[project]
+name = "LLM"
+version = "0.1.0"
+description = "Legacy code repair agent benchmark with QLoRA fine-tuning"
+requires-python = ">=3.10"
+dependencies = [
+    "pytest>=8.0",
+    "anthropic>=0.34",
+    "transformers>=4.44",
+    "peft>=0.12",
+    "bitsandbytes>=0.43",
+    "accelerate>=0.33",
+    "datasets>=2.20",
+    "torch>=2.3",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = "test_*.py"
